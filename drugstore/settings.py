@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'inventory',
 ]
 
 MIDDLEWARE = [
@@ -75,14 +81,21 @@ WSGI_APPLICATION = 'drugstore.wsgi.application'
 
 import os
 
+# Supabase PostgreSQL connection with proper connection pooling settings
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'drugstore_db'),
-        'USER': os.environ.get('POSTGRES_USER', 'drugstore_user'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'drugstore_pass'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'NAME': os.environ.get('POSTGRES_DB', 'postgres'),
+        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'db.yoxwvjlukgfnobqoamdf.supabase.co'),
         'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+        'OPTIONS': {
+            'sslmode': 'require',
+            'pool_timeout': 60,
+            'pool_max_conns': 20,
+            'application_name': 'drugstore-api',
+        }
     }
 }
 
@@ -127,3 +140,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Import local settings if they exist
+try:
+    from .local_settings import *
+except ImportError:
+    pass
