@@ -1,0 +1,94 @@
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+
+# Si estás usando PostgreSQL
+*.psql
+
+# Distribución / empaquetado
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Archivos de entorno virtual
+.env
+.venv
+venv/
+ENV/
+
+# Archivos de Jupyter Notebook
+.ipynb_checkpoints
+
+# Archivos de PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea_modules/
+out/
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Migraciones de Django
+# **/migrations/**
+# !**/migrations/__init__.py
+
+# Celery
+celerybeat-schedule.*
+
+# SageMath parsed files
+*.sage.py
+
+# Documentación
+docs/_build/
+docs/locale/
+
+# Coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+
+# Traducciones
+*.mo
+
+# Django Rest Framework
+api-guide/
+
+# Archivos específicos del proyecto
+*/settings/local.py
+*/settings/production.py
+
+# Otros
+*.bak
+.DS_Store
+.pytest_cache/
