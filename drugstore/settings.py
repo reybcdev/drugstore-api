@@ -91,14 +91,11 @@ DATABASES = {
         'HOST': os.environ.get('POSTGRES_HOST', 'db.yoxwvjlukgfnobqoamdf.supabase.co'),
         'PORT': os.environ.get('POSTGRES_PORT', '5432'),
         'OPTIONS': {
-            'sslmode': 'require',
-            'pool_timeout': 60,
-            'pool_max_conns': 20,
+            'sslmode': 'disable',
             'application_name': 'drugstore-api',
         }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

@@ -3,7 +3,8 @@ from rest_framework.routers import DefaultRouter
 from .views import (
     CategoryViewSet, SupplierViewSet, ProductViewSet,
     CustomerViewSet, EmployeeViewSet, PurchaseViewSet,
-    PurchaseItemViewSet, SaleViewSet, SaleItemViewSet
+    PurchaseItemViewSet, SaleViewSet, SaleItemViewSet,
+    StockAdjustmentViewSet
 )
 
 # Create a router and register our viewsets
@@ -17,6 +18,7 @@ router.register(r'purchases', PurchaseViewSet)
 router.register(r'purchase-items', PurchaseItemViewSet)
 router.register(r'sales', SaleViewSet)
 router.register(r'sale-items', SaleItemViewSet)
+router.register(r'stock-adjustments', StockAdjustmentViewSet)
 
 # The API URLs are determined automatically by the router
 urlpatterns = [
