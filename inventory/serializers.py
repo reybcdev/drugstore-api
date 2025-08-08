@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import (
     Category, Supplier, Product, 
     Customer, Employee, Purchase, 
-    PurchaseItem, Sale, SaleItem
+    PurchaseItem, Sale, SaleItem, StockAdjustment
 )
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -65,4 +65,13 @@ class SaleSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Sale
+        fields = '__all__'
+
+class StockAdjustmentSerializer(serializers.ModelSerializer):
+    product_name = serializers.ReadOnlyField(source='product.name')
+    employee_name = serializers.ReadOnlyField(source='employee.name', allow_null=True)
+    adjustment_type_display = serializers.ReadOnlyField(source='get_adjustment_type_display')
+    
+    class Meta:
+        model = StockAdjustment
         fields = '__all__'
